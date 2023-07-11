@@ -1,12 +1,6 @@
 {
   "heroes": [
     {
-      "id": 1,
-      "name": "Первый герой",
-      "description": "Первый герой в рейтинге!",
-      "element": "fire"
-    },
-    {
       "id": 3,
       "name": "Морской герой",
       "description": "Как аквамен, но не из DC",
@@ -17,6 +11,18 @@
       "name": "Камран",
       "description": "Летать на воздухе ",
       "element": "wind"
+    },
+    {
+      "id": "e33f002e-4859-4c1e-93e0-2250b69353d9",
+      "name": "Человек Земля",
+      "description": "Открывать землю",
+      "element": "earth"
+    },
+    {
+      "id": "26664026-c496-41e7-88a8-a280e7c77ea3",
+      "name": "Начинающий",
+      "description": "Огонь",
+      "element": "fire"
     }
   ],
   "filters": [

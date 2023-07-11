@@ -4,7 +4,6 @@ const initialState = {
     filters: [],
     filtersLoadingStatus: 'idle',
     activeFilter: 'all',
-    filteredHeroes: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -26,13 +25,9 @@ const reducer = (state = initialState, action) => {
                 heroesLoadingStatus: 'error'
             }
         case 'HERO_DELETED':
-            const newHeroList = state.heroes.filter(item => item.id !== action.payload);
             return {
                 ...state,
-                heroes: newHeroList,
-                filteredHeroes: state.activeFilter === 'all' ? 
-                    newHeroList :
-                    newHeroList.filter(item => item.element === state.activeFilter)
+                heroes: state.heroes.filter(item => item.id !== action.payload),
             }
         case 'FILTERS_FETCHING':
         return {
@@ -54,22 +49,14 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 activeFilter: action.payload,
-                filteredHeroes: action.payload === 'all' ? 
-                                state.heroes :
-                                state.heroes.filter(item => item.element === action.payload )
             }
         // Самая сложная часть - это показывать новые элементы по фильтрам
         // при создании или удалении
         case 'HERO_CREATED':
             // Формируем новый массив    
-            let newCreatedHeroList = [...state.heroes, action.payload];
             return {
                 ...state,
-                heroes: newCreatedHeroList,
-                // Фильтруем новые данные по фильтру, который сейчас применяется
-                filteredHeroes: state.activeFilter === 'all' ? 
-                                newCreatedHeroList : 
-                                newCreatedHeroList.filter(item => item.element === state.activeFilter)
+                heroes: [...state.heroes, action.payload],
             }
         default: return state
     }
